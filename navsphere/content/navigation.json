@@ -810,7 +810,9 @@
             }
           ]
         }
-      ]
+      ],
+      "description": "",
+      "enabled": false
     }
   ]
 }
