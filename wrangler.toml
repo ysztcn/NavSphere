@@ -4,8 +4,13 @@ compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".vercel/output/static"
 
 [env.production.vars]
+<<<<<<< .mine
 GITHUB_ID = "Ov23liMYnmHaGmdq1e9Y"
 GITHUB_OWNER = "ysztcn"
+=======
+GITHUB_CLIENT_ID = "Ov23lig3bTXpZHrPO1c8"
+GITHUB_OWNER = "tianyaxiang"
+>>>>>>> .theirs
 GITHUB_REPO = "NavSphere"
 GITHUB_BRANCH = "main"
 NEXTAUTH_URL = "https://navsphere-7zb.pages.dev/api/auth"

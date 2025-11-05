@@ -8,7 +8,7 @@ import { Sidebar } from '@/components/sidebar'
 import { SearchBar } from '@/components/search-bar'
 import { ModeToggle } from '@/components/mode-toggle'
 import { Footer } from '@/components/footer'
-import { Github, HelpCircle } from 'lucide-react'
+import { Github, HelpCircle, Puzzle } from 'lucide-react'
 import { Button } from "@/registry/new-york/ui/button"
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
@@ -38,14 +38,15 @@ export function NavigationContent({ navigationData, siteData }: NavigationConten
     }> = []
 
     navigationData.navigationItems.forEach(category => {
-      // 搜索主分类下的项目
+      // 搜索主分类下的项目（只搜索启用的）
       const items = (category.items || []).filter(item => {
+        if (item.enabled === false) return false
         const titleMatch = item.title.toLowerCase().includes(query)
         const descMatch = item.description?.toLowerCase().includes(query)
         return titleMatch || descMatch
       })
 
-      // 搜索子分类下的项目
+      // 搜索子分类下的项目（只搜索启用的）
       const subResults: Array<{
         title: string
         items: (NavigationItem | NavigationSubItem)[]
@@ -53,12 +54,14 @@ export function NavigationContent({ navigationData, siteData }: NavigationConten
 
       if (category.subCategories) {
         category.subCategories.forEach(sub => {
+          if (sub.enabled === false) return
           const subItems = (sub.items || []).filter(item => {
+            if (item.enabled === false) return false
             const titleMatch = item.title.toLowerCase().includes(query)
             const descMatch = item.description?.toLowerCase().includes(query)
             return titleMatch || descMatch
           })
-          
+
           if (subItems.length > 0) {
             subResults.push({
               title: sub.title,
@@ -155,7 +158,65 @@ export function NavigationContent({ navigationData, siteData }: NavigationConten
                   <Github className="h-5 w-5" />
                 </Button>
               </Link>
+<<<<<<< .mine
               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======
+              <Link
+                href="https://github.com/tianyaxiang/navsphere-extension"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="下载浏览器插件"
+              >
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="hover:bg-accent hover:text-accent-foreground"
+                >
+                  <Puzzle className="h-5 w-5" />
+                </Button>
+              </Link>
+              <Link
+                href="https://mp.weixin.qq.com/s/90LUmKilfLZfc5L63Ej3Sg"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="查看帮助文档"
+              >
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="hover:bg-accent hover:text-accent-foreground"
+                >
+                  <HelpCircle className="h-5 w-5" />
+                </Button>
+              </Link>
+>>>>>>> .theirs
               <Button
                 variant="ghost"
                 size="icon"
